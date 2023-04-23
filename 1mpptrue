@@ -1,0 +1,40 @@
+getgenv().AutoPS = true
+local remotePath = game:GetService("Workspace").Map["Training_Decorations"].PsychicPower["AFK_PP_1"].CFrame
+
+spawn(function ()
+    while getgenv().AutoPS == true do
+        local args = {
+            [1] = {
+                [1] = "Meditation_Request",
+                [2] = true
+            }
+        }
+        game:GetService("ReplicatedStorage").RemoteEvent:FireServer(unpack(args))
+         
+        wait()
+    end
+end)
+
+spawn(function () 
+    getgenv().AutoPS = true do
+        while getgenv().AutoFS == true do
+            function getCurrentPlayerPOS()
+                local plyr = game.Players.LocalPlayer;
+                if plyr.Character then
+                return plyr.Character.HumanoidRootPart.Position;
+                end
+                   return false;
+            
+            end
+            
+            function teleportTo(placeCFrame)
+                local plyr = game.Players.LocalPlayer;
+                if plyr.Character then
+                 plyr.Character.HumanoidRootPart.CFrame = placeCFrame
+                end
+            end
+            teleportTo(remotePath)
+            wait()
+        end
+    end
+end)
