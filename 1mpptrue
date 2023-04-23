@@ -1,6 +1,4 @@
 getgenv().AutoPS = true
-local remotePath = game:GetService("Workspace").Map["Training_Decorations"].PsychicPower["AFK_PP_1"].CFrame
-
 spawn(function ()
     while getgenv().AutoPS == true do
         local args = {
@@ -15,7 +13,7 @@ spawn(function ()
     end
 end)
 
-spawn(function () 
+spawn(function ()
     getgenv().AutoPS = true do
         while getgenv().AutoFS == true do
             function getCurrentPlayerPOS()
@@ -33,7 +31,7 @@ spawn(function ()
                  plyr.Character.HumanoidRootPart.CFrame = placeCFrame
                 end
             end
-            teleportTo(remotePath)
+            teleportTo(game:GetService("Workspace").Map["Training_Decorations"].PsychicPower["AFK_PP_1"].CFrame)
             wait()
         end
     end
